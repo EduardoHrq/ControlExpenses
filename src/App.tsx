@@ -20,15 +20,14 @@ import { Drawer, DrawerTrigger } from "./components/ui/drawer";
 import { CurrencyDrawer } from "./components/components/drawer";
 
 function App() {
-  const [amounts, setAmounts] = useState<string>();
-  const [expenses, setExpenses] = useState<string>();
-
-  const isDesktop = useMediaQuery("(min-width: 768px)");
+  const [amounts, setAmounts] = useState<string>("0");
+  const [expenses, setExpenses] = useState<string>("0");
 
   useEffect(() => {
-    setAmounts("100");
     setExpenses("200");
   }, []);
+
+  const isDesktop = useMediaQuery("(min-width: 768px)");
 
   return (
     <>
@@ -43,7 +42,7 @@ function App() {
               <Dialog>
                 <DialogTrigger asChild>
                   <div className="font-bold text-[2rem] currency group hover:border-b-2 w-max cursor-pointer transition-all flex items-center gap-3">
-                    {parseInt(amounts!).toLocaleString("pt-BR", {
+                    {parseFloat(amounts!).toLocaleString("pt-BR", {
                       style: "currency",
                       currency: "BRL",
                     })}
@@ -51,7 +50,7 @@ function App() {
                   </div>
                 </DialogTrigger>
 
-                <CurrencyDialog />
+                <CurrencyDialog amounts={amounts} setAmounts={setAmounts} />
               </Dialog>
             ) : (
               <Drawer>
