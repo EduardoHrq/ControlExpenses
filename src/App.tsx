@@ -12,7 +12,7 @@ import {
   TableHeader,
   TableRow,
 } from "./components/ui/table";
-import { CircleArrowDown, DollarSign, Pencil } from "lucide-react";
+import { Banknote, CircleArrowDown, DollarSign, Pencil } from "lucide-react";
 import { Dialog, DialogTrigger } from "./components/ui/dialog";
 import { CurrencyDialog } from "./components/components/dialog";
 import { useMediaQuery } from "@uidotdev/usehooks";
@@ -69,6 +69,7 @@ function App() {
               </Drawer>
             )}
           </div>
+
           <div className="w-[20rem] p-3 bg-red-500 rounded-xl shrink-0 relative">
             <span className="absolute right-[.5rem] top-[.5rem] leading-none">
               <CircleArrowDown />
@@ -81,11 +82,24 @@ function App() {
               })}
             </div>
           </div>
+
+          <div className="w-[20rem] p-3 bg-blue-500 rounded-xl shrink-0 relative">
+            <span className="absolute right-[.5rem] top-[.5rem] leading-none">
+              <Banknote />
+            </span>
+            <h1 className="text-opacity-5 text-[1.2rem]">Status</h1>
+            <div className="font-bold text-[2rem] currency">
+              {parseInt("-100").toLocaleString("pt-BR", {
+                style: "currency",
+                currency: "BRL",
+              })}
+            </div>
+          </div>
         </header>
         <ScrollBar orientation="horizontal" />
       </ScrollArea>
-      <main>
-        <Table className="md:w-[50rem] mx-auto text-[1.2rem]">
+      <main className="p-5">
+        <Table className="md:w-[50rem] mx-auto text-[1.2rem] bg-zinc-500 bg-opacity-10 rounded-xl ">
           <TableCaption>List of all expenses</TableCaption>
           <TableHeader>
             <TableRow>
@@ -103,11 +117,11 @@ function App() {
               </TableCell>
             </TableRow>
           </TableBody>
-          <TableFooter>
-            <TableCell colSpan={2} className="font-bold">
+          <TableFooter className="rounded-b-xl">
+            <TableCell colSpan={2} className="font-bold rounded-bl-xl">
               Total
             </TableCell>
-            <TableCell className="text-right">
+            <TableCell className="text-right rounded-br-xl">
               {parseInt(expenses!).toLocaleString("pt-BR", {
                 style: "currency",
                 currency: "BRL",

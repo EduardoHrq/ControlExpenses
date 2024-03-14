@@ -10,23 +10,31 @@ import {
 export function CurrencyDialog() {
   return (
     <DialogPortal>
-      <DialogContent className="bg-zinc-300 bg-opacity-10 backdrop-blur backdrop-saturate-200">
+      <DialogContent className="bg-zinc-300 bg-opacity-10 brightness-200 dark:bg-zinc-500 dark:bg-opacity-20 backdrop-blur-md backdrop-saturate-200 border-none">
         <DialogHeader className="mb-4">
           <DialogTitle>Edit Amount</DialogTitle>
         </DialogHeader>
-        <form>
-          <input
-            type="number"
-            placeholder="amount"
-            className="w-full border-none outline-none p-2 rounded bg-transparent backdrop-blur backdrop-opacity-90 backdrop-saturate-200"
-          />
-          <div>
-            <Button>1</Button>
-            <Button>5</Button>
-            <Button>10</Button>
-            <Button>20</Button>
-          </div>
-        </form>
+
+        <input
+          type="number"
+          placeholder="amount"
+          className="bg-transparent border-none outline-none mx-auto text-center font-bold text-[2.5rem]"
+          value={100}
+        />
+        <div className="mt-3 w-max mx-auto flex gap-2">
+          <Button className="font-bold transition-all " variant={"ghost"}>
+            +1
+          </Button>
+          <Button className="font-bold transition-all " variant={"ghost"}>
+            +5
+          </Button>
+          <Button className="font-bold transition-all " variant={"ghost"}>
+            +10
+          </Button>
+          <Button className="font-bold transition-all " variant={"ghost"}>
+            +20
+          </Button>
+        </div>
 
         <DialogClose asChild>
           <Button variant={"secondary"}>OK</Button>
